@@ -1,5 +1,5 @@
 <template>
-  <button class="button" :disabled="disabled">
+  <button class="button" @click="click" :disabled="disabled">
     <span class="icon">
       <i :class="`fas ${icon}`" />
     </span>
@@ -27,6 +27,14 @@ export default defineComponent({
     disabled: {
       type: Boolean,
       default: false,
+    },
+  },
+
+  emits: ['click'],
+
+  methods: {
+    click():void {
+      this.$emit('click');
     },
   },
 });
