@@ -28,6 +28,8 @@ export default defineComponent({
 
   components: { Timer },
 
+  emits: ['save'],
+
   data() {
     return {
       description: ''
@@ -35,9 +37,12 @@ export default defineComponent({
   },
 
   methods: {
-    finishTask(time:number):void {      
+    finishTask(time:number):void {     
+      this.$emit('save', {
+        duration: time,
+        description: this.description
+      }) 
       this.description = ''
-      console.log(time)
     }
   }
 });
