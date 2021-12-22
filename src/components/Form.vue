@@ -7,13 +7,14 @@
         aria-label="Formulário para cadastro de uma nova tarefa"
       >
         <input
+          v-model="description"
           type="text"
           class="input"
           placeholder="Qual tarefa você deseja iniciar?"
         />
       </div>
       <div class="column">
-        <Timer />
+        <Timer @timerFinish="finishTask" />
       </div>
     </div>
   </div>
@@ -26,5 +27,18 @@ export default defineComponent({
   name: 'Form',
 
   components: { Timer },
+
+  data() {
+    return {
+      description: ''
+    }
+  },
+
+  methods: {
+    finishTask(time:number):void {      
+      this.description = ''
+      console.log(time)
+    }
+  }
 });
 </script>
